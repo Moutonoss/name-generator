@@ -3,12 +3,14 @@ import random
 
 import names
 
+def genSurname():
+    rnd7 = random.randint(0, len(names.surname_prefix) - 1)
+    rnd8 = random.randint(0, len(names.surname_suffix) - 1)
+
+    return names.surname_prefix[rnd7] + names.surname_suffix[rnd8];
+
 def generateName(sex):
     rnd2 = random.randint(0, len(names.nm2) - 1)
-    rnd7 = random.randint(0, len(names.nm7) - 1)
-    rnd8 = random.randint(0, len(names.nm8) - 1)
-
-    surname = names.nm7[rnd7] + names.nm8[rnd8];
 
     if(sex == "male"):
         rnd4 = random.randint(0, len(names.nm4) - 1)
@@ -19,7 +21,7 @@ def generateName(sex):
         rnd6 = random.randint(0, len(names.nm3) - 1)
         firstname = names.nm1[rnd4] + names.nm2[rnd2] + names.nm3[rnd6]
 
-    return "{} {}".format(firstname, surname)
+    return "{} {}".format(firstname, genSurname())
 
 def main():
     parser = argparse.ArgumentParser()
